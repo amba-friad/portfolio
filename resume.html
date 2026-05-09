@@ -1,0 +1,514 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resume - Amba Friad Permana</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        @page {
+            size: A4;
+            margin: 0;
+        }
+
+        body {
+            font-family: 'Inter', 'Segoe UI', Arial, sans-serif;
+            background: #f0f0f0;
+            color: #2d2d2d;
+            display: flex;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .resume-page {
+            width: 210mm;
+            min-height: 297mm;
+            background: #ffffff;
+            display: grid;
+            grid-template-columns: 220px 1fr;
+            box-shadow: 0 4px 24px rgba(0,0,0,0.15);
+            overflow: hidden;
+        }
+
+        /* ===== LEFT SIDEBAR ===== */
+        .sidebar {
+            background: #1a1f36;
+            color: #e0e0e0;
+            padding: 36px 22px;
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+        }
+
+        .sidebar .name-block {
+            text-align: center;
+            margin-bottom: 6px;
+        }
+
+        .sidebar .avatar {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #4f8cff, #a259ff);
+            margin: 0 auto 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 38px;
+            font-weight: 700;
+            color: #fff;
+            letter-spacing: 1px;
+        }
+
+        .sidebar .name-block h1 {
+            font-size: 17px;
+            font-weight: 700;
+            color: #ffffff;
+            letter-spacing: 0.5px;
+            line-height: 1.3;
+        }
+
+        .sidebar .name-block .title {
+            font-size: 10.5px;
+            color: #8b92b3;
+            margin-top: 4px;
+            font-weight: 400;
+            letter-spacing: 0.3px;
+        }
+
+        .sidebar .section-title {
+            font-size: 11px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            color: #4f8cff;
+            border-bottom: 1.5px solid #2e3454;
+            padding-bottom: 6px;
+            margin-bottom: 10px;
+        }
+
+        .sidebar .contact-list {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .sidebar .contact-list li {
+            font-size: 10px;
+            display: flex;
+            align-items: flex-start;
+            gap: 8px;
+            line-height: 1.45;
+            color: #c5c9e0;
+        }
+
+        .sidebar .contact-list li .icon {
+            flex-shrink: 0;
+            width: 16px;
+            text-align: center;
+            color: #4f8cff;
+            font-size: 11px;
+            margin-top: 1px;
+        }
+
+        .sidebar .skills-list {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 9px;
+        }
+
+        .sidebar .skills-list li {
+            font-size: 10px;
+            color: #c5c9e0;
+        }
+
+        .sidebar .skills-list li .skill-name {
+            display: block;
+            margin-bottom: 4px;
+            font-weight: 500;
+            color: #e0e0e0;
+        }
+
+        .sidebar .skill-bar {
+            width: 100%;
+            height: 5px;
+            background: #2e3454;
+            border-radius: 3px;
+            overflow: hidden;
+        }
+
+        .sidebar .skill-bar .fill {
+            height: 100%;
+            border-radius: 3px;
+            background: linear-gradient(90deg, #4f8cff, #a259ff);
+        }
+
+        .sidebar .lang-list {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 7px;
+        }
+
+        .sidebar .lang-list li {
+            font-size: 10px;
+            color: #c5c9e0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .sidebar .lang-list li .level {
+            font-size: 9px;
+            color: #8b92b3;
+            font-style: italic;
+        }
+
+        .sidebar .interests-list {
+            list-style: none;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+        }
+
+        .sidebar .interests-list li {
+            font-size: 9px;
+            background: #2e3454;
+            color: #a8aed0;
+            padding: 4px 10px;
+            border-radius: 12px;
+        }
+
+        /* ===== MAIN CONTENT ===== */
+        .main-content {
+            padding: 36px 32px;
+            display: flex;
+            flex-direction: column;
+            gap: 22px;
+        }
+
+        .main-content .section-title {
+            font-size: 13px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            color: #1a1f36;
+            border-bottom: 2px solid #4f8cff;
+            padding-bottom: 5px;
+            margin-bottom: 10px;
+        }
+
+        /* Profile */
+        .profile-text {
+            font-size: 10.5px;
+            line-height: 1.7;
+            color: #4a4a4a;
+        }
+
+        /* Experience & Education Items */
+        .timeline-item {
+            margin-bottom: 16px;
+            position: relative;
+            padding-left: 14px;
+            border-left: 2px solid #e0e4f0;
+        }
+
+        .timeline-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -5px;
+            top: 3px;
+            width: 8px;
+            height: 8px;
+            background: #4f8cff;
+            border-radius: 50%;
+        }
+
+        .timeline-item .item-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            margin-bottom: 3px;
+        }
+
+        .timeline-item .item-title {
+            font-size: 11.5px;
+            font-weight: 600;
+            color: #1a1f36;
+        }
+
+        .timeline-item .item-date {
+            font-size: 9.5px;
+            color: #8b92b3;
+            font-weight: 500;
+            white-space: nowrap;
+        }
+
+        .timeline-item .item-subtitle {
+            font-size: 10px;
+            color: #4f8cff;
+            font-weight: 500;
+            margin-bottom: 5px;
+        }
+
+        .timeline-item .item-desc {
+            font-size: 10px;
+            line-height: 1.6;
+            color: #555;
+        }
+
+        .timeline-item .item-desc ul {
+            padding-left: 14px;
+            margin-top: 3px;
+        }
+
+        .timeline-item .item-desc ul li {
+            margin-bottom: 2px;
+        }
+
+        /* Certifications */
+        .cert-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .cert-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            padding: 7px 10px;
+            background: #f7f8fc;
+            border-radius: 6px;
+            border-left: 3px solid #4f8cff;
+        }
+
+        .cert-item .cert-name {
+            font-size: 10px;
+            font-weight: 500;
+            color: #2d2d2d;
+        }
+
+        .cert-item .cert-issuer {
+            font-size: 9px;
+            color: #8b92b3;
+        }
+
+        /* Print styles */
+        @media print {
+            body {
+                background: #fff;
+                padding: 0;
+            }
+
+            .resume-page {
+                box-shadow: none;
+                width: 100%;
+                min-height: 100vh;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="resume-page">
+    <!-- ===== SIDEBAR ===== -->
+    <aside class="sidebar">
+        <div class="name-block">
+            <div class="avatar">AF</div>
+            <h1>Amba Friad<br>Permana</h1>
+            <div class="title">Data Analyst &amp; AI Training Specialist</div>
+        </div>
+
+        <!-- Contact -->
+        <div>
+            <div class="section-title">Contact</div>
+            <ul class="contact-list">
+                <li><span class="icon">✉</span> Amkimoy@gmail.com</li>
+                <li><span class="icon">📍</span> Jambi City, Jambi Province, Indonesia</li>
+                <li><span class="icon">🔗</span> linkedin.com/in/ambafriad</li>
+            </ul>
+        </div>
+
+        <!-- Skills -->
+        <div>
+            <div class="section-title">Skills</div>
+            <ul class="skills-list">
+                <li>
+                    <span class="skill-name">Data Annotation & Labeling</span>
+                    <div class="skill-bar"><div class="fill" style="width:90%"></div></div>
+                </li>
+                <li>
+                    <span class="skill-name">AI/ML Data Quality</span>
+                    <div class="skill-bar"><div class="fill" style="width:85%"></div></div>
+                </li>
+                <li>
+                    <span class="skill-name">Content Moderation</span>
+                    <div class="skill-bar"><div class="fill" style="width:85%"></div></div>
+                </li>
+                <li>
+                    <span class="skill-name">Microsoft Office Suite</span>
+                    <div class="skill-bar"><div class="fill" style="width:80%"></div></div>
+                </li>
+                <li>
+                    <span class="skill-name">Google Workspace</span>
+                    <div class="skill-bar"><div class="fill" style="width:82%"></div></div>
+                </li>
+                <li>
+                    <span class="skill-name">Research & Analysis</span>
+                    <div class="skill-bar"><div class="fill" style="width:80%"></div></div>
+                </li>
+                <li>
+                    <span class="skill-name">Web Browsing & Data Mining</span>
+                    <div class="skill-bar"><div class="fill" style="width:78%"></div></div>
+                </li>
+            </ul>
+        </div>
+
+        <!-- Languages -->
+        <div>
+            <div class="section-title">Languages</div>
+            <ul class="lang-list">
+                <li>Bahasa Indonesia <span class="level">Native</span></li>
+                <li>English <span class="level">Professional Working</span></li>
+            </ul>
+        </div>
+
+        <!-- Interests -->
+        <div>
+            <div class="section-title">Interests</div>
+            <ul class="interests-list">
+                <li>AI & Machine Learning</li>
+                <li>Data Science</li>
+                <li>Technology</li>
+                <li>Digital Literacy</li>
+                <li>Freelancing</li>
+            </ul>
+        </div>
+    </aside>
+
+    <!-- ===== MAIN CONTENT ===== -->
+    <main class="main-content">
+        <!-- Profile -->
+        <section>
+            <div class="section-title">Professional Summary</div>
+            <p class="profile-text">
+                Detail-oriented and highly motivated Data Analyst and AI Training Specialist with hands-on experience in data annotation, content evaluation, and quality assurance for AI/ML projects. Proven ability to work independently in remote environments, manage time effectively, and deliver accurate results under tight deadlines. Passionate about contributing to the development of artificial intelligence through high-quality human-in-the-loop data processes. Bilingual in Bahasa Indonesia and English.
+            </p>
+        </section>
+
+        <!-- Experience -->
+        <section>
+            <div class="section-title">Work Experience</div>
+
+            <div class="timeline-item">
+                <div class="item-header">
+                    <span class="item-title">Freelance Data Annotator & AI Evaluator</span>
+                    <span class="item-date">Jan 2024 – Present</span>
+                </div>
+                <div class="item-subtitle">Self-Employed · Remote</div>
+                <div class="item-desc">
+                    <ul>
+                        <li>Performed data labeling and annotation tasks for various AI training datasets, including image classification, text categorization, and sentiment analysis</li>
+                        <li>Evaluated AI-generated content for accuracy, relevance, and quality across multiple crowdsourcing platforms</li>
+                        <li>Maintained a 97% accuracy rate in annotation quality checks</li>
+                        <li>Completed 2,000+ micro-tasks with consistent high ratings from project managers</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="timeline-item">
+                <div class="item-header">
+                    <span class="item-title">Virtual Assistant & Data Entry Specialist</span>
+                    <span class="item-date">Jun 2022 – Dec 2023</span>
+                </div>
+                <div class="item-subtitle">Freelance · Remote</div>
+                <div class="item-desc">
+                    <ul>
+                        <li>Managed data entry, file organization, and spreadsheet management for small businesses</li>
+                        <li>Conducted internet research and compiled reports for clients across various industries</li>
+                        <li>Handled email correspondence and scheduling in both Bahasa Indonesia and English</li>
+                        <li>Improved data processing efficiency by 30% through systematic workflow organization</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="timeline-item">
+                <div class="item-header">
+                    <span class="item-title">Content Moderator (Part-time)</span>
+                    <span class="item-date">Mar 2021 – May 2022</span>
+                </div>
+                <div class="item-subtitle">Digital Agency · Jambi</div>
+                <div class="item-desc">
+                    <ul>
+                        <li>Reviewed and moderated user-generated content on social media platforms</li>
+                        <li>Applied content guidelines and community standards to ensure platform safety</li>
+                        <li>Processed an average of 500+ content reviews daily with a 98% compliance rate</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Education -->
+        <section>
+            <div class="section-title">Education</div>
+
+            <div class="timeline-item">
+                <div class="item-header">
+                    <span class="item-title">Bachelor of Information Systems (S.SI)</span>
+                    <span class="item-date">2018 – 2022</span>
+                </div>
+                <div class="item-subtitle">Universitas Jambi</div>
+                <div class="item-desc">
+                    Relevant coursework: Database Management, Data Analysis, Information Technology, Human-Computer Interaction, Web Technologies, Statistics for Computing
+                </div>
+            </div>
+        </section>
+
+        <!-- Certifications -->
+        <section>
+            <div class="section-title">Certifications</div>
+            <div class="cert-grid">
+                <div class="cert-item">
+                    <span class="cert-name">Google Data Analytics Professional Certificate</span>
+                    <span class="cert-issuer">Coursera · 2023</span>
+                </div>
+                <div class="cert-item">
+                    <span class="cert-name">Introduction to Artificial Intelligence</span>
+                    <span class="cert-issuer">Dicoding Indonesia · 2023</span>
+                </div>
+                <div class="cert-item">
+                    <span class="cert-name">Microsoft Office Specialist (MOS)</span>
+                    <span class="cert-issuer">Microsoft · 2022</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Additional -->
+        <section>
+            <div class="section-title">Key Strengths</div>
+            <p class="profile-text">
+                ✓ Strong attention to detail and consistency in repetitive tasks &nbsp;&nbsp;
+                ✓ Self-motivated remote worker with excellent time management &nbsp;&nbsp;
+                ✓ Fast learner adaptable to new tools, guidelines, and workflows &nbsp;&nbsp;
+                ✓ Effective communicator in bilingual environments (ID/EN) &nbsp;&nbsp;
+                ✓ Familiar with crowdsourcing platforms and microtask methodologies
+            </p>
+        </section>
+    </main>
+</div>
+
+</body>
+</html>
